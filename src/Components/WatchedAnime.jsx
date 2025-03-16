@@ -28,12 +28,12 @@ export default function WatchedAnime() {
 
   return (
     <div className="container">
-      <h2>Watched Anime</h2>
+      <h2>Watched Anime-{watchedAnime.length}</h2>
       <div className="anime-grid">
         {watchedAnime.map((anime) => (
           <div key={anime.id} className="anime-card">
             <img src={anime.image} alt={anime.title} />
-            <h3>{anime.title}</h3>
+            <h3>{anime.title_english  || anime.title}</h3>
             <p>Rating: {anime.rating}/10</p>
             <button className="delete-btn" onClick={() => deleteAnime(anime.id)}>❌ Remove</button>
           </div>

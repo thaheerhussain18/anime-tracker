@@ -22,7 +22,7 @@ export default function AddAnime() {
     try {
       await addDoc(collection(db, "users", user.uid, category === "watched" ? "watchedAnime" : "savedAnime"), {
         mal_id: anime.mal_id,
-        title: anime.title,
+        title: anime.title_english,
         image: anime.images.jpg.image_url,
         rating: rating, // Save rating
       });
@@ -50,7 +50,7 @@ export default function AddAnime() {
         {animeList.map((anime) => (
           <div key={anime.mal_id} className="anime-card">
             <img src={anime.images.jpg.image_url} alt={anime.title} />
-            <h3>{anime.title}</h3>
+            <h3>{anime.title_english}</h3>
             <label>Rating:</label>
             <input type="number" value={rating} onChange={(e) => setRating(Number(e.target.value))} min="0" max="10" />
             <button onClick={() => addToList(anime)}>Add</button>
