@@ -86,9 +86,7 @@ export default function Login() {
         </form>
         <p style={{ color: "white", marginTop: "10px" }}>
           Don't have an account?{" "}
-          <a href="/signup" style={{ color: "#1e90ff", textDecoration: "none" }}>
-            Sign Up
-          </a>
+            Sign Up from above top right 
         </p>
       </div>
     </div>
