@@ -1,46 +1,40 @@
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import "./Saved.css"; // Import CSS styles
+import { db, collection, getDocs, deleteDoc, doc } from "../firebase";
+import { useAuth } from "./AuthContext";
+import "./styles.css";
 
 export default function SavedAnime() {
+  const { user } = useAuth();
   const [savedAnime, setSavedAnime] = useState([]);
 
-  // Fetch saved anime from Firebase
-  const fetchSavedAnime = async () => {
-    const querySnapshot = await getDocs(collection(db, "savedAnime"));
-    const animeData = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    setSavedAnime(animeData);
-  };
-
   useEffect(() => {
-    fetchSavedAnime();
-  }, []);
+    const fetchSavedAnime = async () => {
+      if (!user) return;
+      const querySnapshot = await getDocs(collection(db, "users", user.uid, "savedAnime"));
+      setSavedAnime(querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    };
 
-  // Delete anime from Firebase
+    fetchSavedAnime();
+  }, [user]);
+
   const deleteAnime = async (id) => {
     try {
-      await deleteDoc(doc(db, "savedAnime", id));
+      await deleteDoc(doc(db, "users", user.uid, "savedAnime", id));
       setSavedAnime(savedAnime.filter((anime) => anime.id !== id));
     } catch (error) {
-      console.error("Error deleting document: ", error);
+      console.error("Error deleting anime:", error);
     }
   };
 
   return (
     <div className="container">
-      <h2 className="section-title">Saved to Watch ({savedAnime.length})</h2>
+      <h2>Saved to Watch</h2>
       <div className="anime-grid">
         {savedAnime.map((anime) => (
           <div key={anime.id} className="anime-card">
-            <img src={anime.image} alt={anime.title} className="anime-image" />
-            <p className="anime-title">{(anime.title_english)}</p>
-            <button className="delete-btn" onClick={() => deleteAnime(anime.id)}>
-              ❌ Remove
-            </button>
+            <img src={anime.image} alt={anime.title} />
+            <h3>{anime.title}</h3>
+            <button className="delete-btn" onClick={() => deleteAnime(anime.id)}>❌ Remove</button>
           </div>
         ))}
       </div>

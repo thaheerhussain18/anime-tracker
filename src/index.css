@@ -1,83 +1,212 @@
-/* Smooth background gradient */
+/* Global Styles */
 body {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: Arial, sans-serif;
+  background-color: #121212;
   color: white;
-  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Anime grid container */
-.anime-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
   padding: 20px;
-}
-
-/* Anime card */
-.anime-card {
-  background: #2d3748;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.anime-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-/* Anime image */
-.anime-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-/* Anime title */
-.anime-card h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 10px;
   text-align: center;
-  color: #fbbf24;
 }
 
-/* Buttons */
-.button {
-  display: block;
-  background: #4caf50;
-  color: white;
-  font-weight: bold;
-  padding: 8px 16px;
-  margin: 10px auto;
-  text-align: center;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.button:hover {
-  background: #388e3c;
-}
-
-/* Search Bar */
-.search-container {
+/* Search Box */
+.search-box {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.search-container input {
-  width: 60%;
+.search-box input {
   padding: 10px;
-  font-size: 1rem;
-  border-radius: 6px;
+  width: 250px;
   border: none;
-  outline: none;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
-/* Dark Mode */
-.dark-mode {
-  background: linear-gradient(135deg, #1a202c, #2d3748);
+.search-box button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.search-box button:hover {
+  background-color: #0056b3;
+}
+
+/* Category Select */
+.category-select {
+  margin-bottom: 20px;
+}
+
+.category-select select {
+  padding: 5px;
+  font-size: 16px;
+}
+
+/* Anime List */
+.anime-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Anime Card */
+.anime-card {
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.anime-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.anime-card h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.anime-card button {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.anime-card button:hover {
+  background-color: #218838;
+}
+
+/* Anime Grid */
+.anime-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+/* Navbar */
+nav {
+  background: #1e1e1e;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+nav button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: darkred;
+}
+
+/* Rating Input */
+input[type="number"] {
+  width: 50px;
+  padding: 5px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+/* ===== LOGIN & SIGNUP PAGE ===== */
+.auth-container {
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 350px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 15px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
+.auth-link {
+  margin-top: 10px;
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
 }

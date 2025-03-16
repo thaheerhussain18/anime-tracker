@@ -1,19 +1,22 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import AddAnime from "./AddAnime";
-import WatchedList from "./WatchedList";
-import SavedList from "./SavedList";
-import "./styles.css";
+import WatchedAnime from "./WatchedAnime";
+import SavedAnime from "./SavedAnime";
+import PrivateRoute from "./PrivateRoute";
+import { AuthProvider } from "./AuthContext";
 
 export default function Home() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<AddAnime />} />
-        <Route path="/watched" element={<WatchedList />} />
-        <Route path="/saved" element={<SavedList />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<PrivateRoute><AddAnime /></PrivateRoute>} />
+          <Route path="/watched" element={<PrivateRoute><WatchedAnime /></PrivateRoute>} />
+          <Route path="/saved" element={<PrivateRoute><SavedAnime /></PrivateRoute>} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
